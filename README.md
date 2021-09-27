@@ -15,15 +15,26 @@ nombre de stalles V2 : 630
 nombre de stalles V3 : 323
 ********************************************************************************
 il y a  24 SUC annonces 
+
 Yvetot (coming soon)
+
 ********************************************************************************
+
 il y a  25 SUC annonces 
+
 Évry (coming soon)
+
 ********************************************************************************
+
 il y a  25 SUC annoncés 
+
 il y a un total de  99  SUC operationnels
+
 il y aura bientot  124  SUC
+
 il y a  630  stalles à 150 kW
+
 il y a  323  stalles à 250 kW
+
 il y a un total de  953 stalles
 
