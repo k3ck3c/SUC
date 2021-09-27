@@ -38,3 +38,8 @@ il y a  323  stalles à 250 kW
 
 il y a un total de  953 stalles
 
+le plus grand V2 a 20 stalles à  Mâcon Supercharger
+
+le plus grand V3 a 20 stalles à  Le Mans - Saint-Saturnin Supercharger
+
+
