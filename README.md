@@ -2,7 +2,7 @@
 liste les SUC en France 
 exemple
 
-python 2.7 sm.py
+python2.7 sm.py
 ...
 /findus/location/supercharger/velizyisvelizy2supercharger
 numero  99
