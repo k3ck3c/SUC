@@ -22,73 +22,69 @@ listeUserAgents = [ 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; fr-fr) Ap
 
 url = 'https://www.tesla.com/findus/list/superchargers/France'
 bientot, cp, suc, sucv2, sucv3, nbsuc, bigv2, bigv3 = 0, 0, 0, 0, 0, 0, 0, 0
-sitev2 = ''
-sitev3 = ''
-smallv2= 10
-smallv3 = 10
-petitv2 = ''
-petitv3 = ''
-#if __name__ = "__main__":
-response = requests.get(url, headers={'user-agent': random.choice(listeUserAgents)})
-print response.status_code
-soup = BeautifulSoup(response.content, 'html.parser')
-for lien in soup.find_all('a'):
-    if '/findus/location/supercharger' in lien['href']:
-        if '(coming soon)' in lien.text:
-            bientot = bientot + 1
-            print 'il y a ',bientot,'SUC annonces '
-            print lien.text
-            print '*' * 80
-        else:
-            print lien.text
-#            print lien['href']
-            cp = cp + 1
-            sleep(randint(3,12)) #pour éviter de se faire blacklister par les sites Tesla (erreur 403)
-            print 'numero ',cp
-            urlsuc = 'https://www.tesla.com/fr_FR' + lien['href']
-#            print 'le site local ',urlsuc
-            htmlsuc = requests.get(urlsuc, headers={'user-agent': random.choice(listeUserAgents)})
-            print htmlsuc.ok
-            if htmlsuc.ok:
-                soupsuc = BeautifulSoup(htmlsuc.content, 'html.parser')
-                for infosuc in soupsuc.find(attrs={ "class":"vcard"}).findAll(text=True):
-                    if 'upercharger' in  infosuc:
-                        stalle = infosuc.split(' ')[0]
-                        print stalle, infosuc.split(' ')[-1]
-                        print 'nombre de stalles ', stalle
-                        if '150' in infosuc:
-                            sucv2 = sucv2 + int(stalle)
-                            print sucv2
-                            if  int(stalle) > bigv2:
-                                bigv2 = int(stalle)
-                                sitev2 = lien.text
-                            if int(stalle) < smallv2:
-                                smallv2 = int(stalle)
-                                petitv2 = lien.text
-                            print stalle, ' SUC V2'
-                        if '250' in infosuc:
-                            sucv3 = sucv3 + int(stalle)
-                            if int(stalle) > bigv3:
-                                bigv3 = int(stalle)
-                                sitev3 = lien.text
-                            if int(stalle) < smallv3:
-                                smallv3 = int(stalle)
-                                petitv3 = lien.text
-                            print stalle, ' SUC V3'
+sitev2, sitev3, petitv2, petitv3 = '', '', '', ''
+smallv2, smallv3 = 10, 10
 
-            print '%s: %d' % ('nombre de stalles V2 ' , sucv2)
-            print '%s: %d' % ('nombre de stalles V3 ' , sucv3)
-            suc = suc + 1
-            print '*' * 80
+if __name__ == "__main__":
+    response = requests.get(url, headers={'user-agent': random.choice(listeUserAgents)})
+    print response.status_code
+    soup = BeautifulSoup(response.content, 'html.parser')
+    for lien in soup.find_all('a'):
+        if '/findus/location/supercharger' in lien['href']:
+            if '(coming soon)' in lien.text:
+                bientot = bientot + 1
+                print 'il y a ',bientot,'SUC annonces '
+                print lien.text
+                print '*' * 80
+            else:
+                print lien.text
+                cp = cp + 1
+                sleep(randint(3,12)) #pour éviter de se faire blacklister par les sites Tesla (erreur 403)
+                print 'numero ',cp
+                urlsuc = 'https://www.tesla.com/fr_FR' + lien['href']
+                htmlsuc = requests.get(urlsuc, headers={'user-agent': random.choice(listeUserAgents)})
+                print htmlsuc.ok
+                if htmlsuc.ok:
+                    soupsuc = BeautifulSoup(htmlsuc.content, 'html.parser')
+                    for infosuc in soupsuc.find(attrs={ "class":"vcard"}).findAll(text=True):
+                        if 'upercharger' in  infosuc:
+                            stalle = infosuc.split(' ')[0]
+#                            print stalle, infosuc.split(' ')[-1]
+                            print 'nombre de stalles ', stalle
+                            if '150' in infosuc:
+                                sucv2 = sucv2 + int(stalle)
+#                               print sucv2
+                                if  int(stalle) > bigv2:
+                                    bigv2 = int(stalle)
+                                    sitev2 = lien.text
+                                if int(stalle) < smallv2:
+                                    smallv2 = int(stalle)
+                                    petitv2 = lien.text
+                                    print stalle, ' SUC V2'
+                            if '250' in infosuc:
+                                sucv3 = sucv3 + int(stalle)
+#                                print sucv3
+                                if int(stalle) > bigv3:
+                                    bigv3 = int(stalle)
+                                    sitev3 = lien.text
+                                if int(stalle) < smallv3:
+                                    smallv3 = int(stalle)
+                                    petitv3 = lien.text
+                                    print stalle, ' SUC V3'
+
+                print '%s: %d' % ('nombre de stalles V2 ' , sucv2)
+                print '%s: %d' % ('nombre de stalles V3 ' , sucv3)
+                suc = suc + 1
+                print '*' * 80
                 
-print 'il y a ',bientot,'SUC annoncés '
-print 'il y a un total de ',suc, ' SUC operationnels'
-print 'il y aura bientot ', suc + bientot, ' SUC'
-print 'il y a ', sucv2, ' stalles à 150 kW'
-print 'il y a ', sucv3, ' stalles à 250 kW'
-print 'il y a un total de ', sucv2 + sucv3 , 'stalles'
-print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2
-print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3
-print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2
-print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3
-#    pass
+    print 'il y a ',bientot,'SUC annoncés '
+    print 'il y a un total de ',suc, ' SUC operationnels'
+    print 'il y aura bientot ', suc + bientot, ' SUC'
+    print 'il y a ', sucv2, ' stalles à 150 kW'
+    print 'il y a ', sucv3, ' stalles à 250 kW'
+    print 'il y a un total de ', sucv2 + sucv3 , 'stalles'
+    print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2
+    print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3
+    print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2
+    print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3
+    pass
