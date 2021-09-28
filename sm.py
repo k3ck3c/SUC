@@ -1,15 +1,13 @@
 #!/usr/bin/python2.7
 # -*- coding:utf-8 -*- 
-import requests
-from bs4 import BeautifulSoup
 import random
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
 from random import randint
 from time import sleep
-
-    
+reload(sys)
+sys.setdefaultencoding('utf8')    
+import requests
+from bs4 import BeautifulSoup
 listeUserAgents = [ 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; fr-fr) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.2 Safari/525.20.1',
                                                 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.186 Safari/535.1',
                                                 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13\
@@ -87,8 +85,8 @@ if __name__ == "__main__":
     print 'il y a ', sucv2, ' stalles à 150 kW'
     print 'il y a ', sucv3, ' stalles à 250 kW'
     print 'il y a un total de ', sucv2 + sucv3 , 'stalles'
-    print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2, 'adresse ', adrgrosv2
-    print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3, 'adresse ', adrgrosv3
-    print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2, 'adresse ', adrpetitv2
-    print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3, 'adresse ', adrpetitv3
+    print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2 , adrgrosv2
+    print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3 , adrgrosv3
+    print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2, adrpetitv2
+    print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3, adrpetitv3
     pass
