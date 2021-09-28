@@ -50,7 +50,7 @@ if __name__ == "__main__":
                         if 'upercharger' in  infosuc:
                             stalle = infosuc.split(' ')[0]
 #                            print stalle, infosuc.split(' ')[-1]
-                            print 'nombre de stalles ', stalle
+#                            print 'nombre de stalles ', stalle
                             if '150' in infosuc:
                                 sucv2 = sucv2 + int(stalle)
 #                               print sucv2
@@ -60,7 +60,7 @@ if __name__ == "__main__":
                                 if int(stalle) < smallv2:
                                     smallv2 = int(stalle)
                                     petitv2 = lien.text
-                                    print stalle, ' SUC V2'
+                                print stalle, ' SUC V2'
                             if '250' in infosuc:
                                 sucv3 = sucv3 + int(stalle)
 #                                print sucv3
@@ -70,7 +70,7 @@ if __name__ == "__main__":
                                 if int(stalle) < smallv3:
                                     smallv3 = int(stalle)
                                     petitv3 = lien.text
-                                    print stalle, ' SUC V3'
+                                print stalle, ' SUC V3'
 
                 print '%s: %d' % ('nombre de stalles V2 ' , sucv2)
                 print '%s: %d' % ('nombre de stalles V3 ' , sucv3)
