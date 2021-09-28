@@ -22,7 +22,7 @@ listeUserAgents = [ 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; fr-fr) Ap
 
 url = 'https://www.tesla.com/findus/list/superchargers/France'
 bientot, cp, suc, sucv2, sucv3, nbsuc, bigv2, bigv3 = 0, 0, 0, 0, 0, 0, 0, 0
-sitev2, sitev3, petitv2, petitv3 = '', '', '', ''
+sitev2, sitev3, petitv2, petitv3, adrpetitv2, ardvpetitv3, adrgrosv2, adrgrosv3 = '', '', '', '', '', '', '', ''
 smallv2, smallv3 = 10, 10
 
 if __name__ == "__main__":
@@ -57,9 +57,11 @@ if __name__ == "__main__":
                                 if  int(stalle) > bigv2:
                                     bigv2 = int(stalle)
                                     sitev2 = lien.text
+                                    adrgrosv2 = soupsuc.findAll("span",attrs={ "class":"locality"})[0].findAll(text=True)[0]
                                 if int(stalle) < smallv2:
                                     smallv2 = int(stalle)
                                     petitv2 = lien.text
+                                    adrpetitv2 = soupsuc.findAll("span",attrs={ "class":"locality"})[0].findAll(text=True)[0]
                                 print stalle, ' SUC V2'
                             if '250' in infosuc:
                                 sucv3 = sucv3 + int(stalle)
@@ -67,9 +69,11 @@ if __name__ == "__main__":
                                 if int(stalle) > bigv3:
                                     bigv3 = int(stalle)
                                     sitev3 = lien.text
+                                    adrgrosv3 = soupsuc.findAll("span",attrs={ "class":"locality"})[0].findAll(text=True)[0]
                                 if int(stalle) < smallv3:
                                     smallv3 = int(stalle)
                                     petitv3 = lien.text
+                                    adrpetitv3 = soupsuc.findAll("span",attrs={ "class":"locality"})[0].findAll(text=True)[0]
                                 print stalle, ' SUC V3'
 
                 print '%s: %d' % ('nombre de stalles V2 ' , sucv2)
@@ -83,8 +87,8 @@ if __name__ == "__main__":
     print 'il y a ', sucv2, ' stalles à 150 kW'
     print 'il y a ', sucv3, ' stalles à 250 kW'
     print 'il y a un total de ', sucv2 + sucv3 , 'stalles'
-    print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2
-    print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3
-    print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2
-    print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3
+    print 'le plus grand V2 a',  bigv2, 'stalles à ', sitev2, 'adresse ', adrgrosv2
+    print 'le plus grand V3 a',  bigv3, 'stalles à ', sitev3, 'adresse ', adrgrosv3
+    print 'le plus petit V2 a', smallv2, 'stalles à ', petitv2, 'adresse ', adrpetitv2
+    print 'le plus petit V3 a', smallv3, 'stalles à ', petitv3, 'adresse ', adrpetitv3
     pass
