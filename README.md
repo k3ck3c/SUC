@@ -3,28 +3,6 @@ liste les SUC en France
 exemple
 
 python2.7 sm.py
-...
-/findus/location/supercharger/velizyisvelizy2supercharger
-numero  99
-le site local  https://www.tesla.com/fr_FR/findus/location/supercharger/velizyisvelizy2supercharger
-True
-16 250kW
-nombre de stalles  16
-16  SUC V3
-nombre de stalles V2 : 630
-nombre de stalles V3 : 323
-********************************************************************************
-il y a  24 SUC annonces 
-
-Yvetot (coming soon)
-
-********************************************************************************
-
-il y a  25 SUC annonces 
-
-Évry (coming soon)
-
-********************************************************************************
 
 il y a  25 SUC annoncés 
 
@@ -42,4 +20,6 @@ le plus grand V2 a 20 stalles à  Mâcon Supercharger
 
 le plus grand V3 a 20 stalles à  Le Mans - Saint-Saturnin Supercharger
 
+le plus petit V2 a 2 stalles à  Eurotunnel Flexiplus Lounge Supercharger
 
+le plus petit V3 a 4 stalles à  Aix-en-Provence - Val de l'Arc Supercharger
