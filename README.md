@@ -1,5 +1,6 @@
 # SUC
 liste les SUC en France 
+avec python 2.7 ou 3.9
 exemple
 
 python2.7 sm.py
