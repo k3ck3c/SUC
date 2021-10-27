@@ -1,0 +1,16 @@
+FROM python:3.9-alpine as base
+RUN mkdir /svc
+WORKDIR /svc
+COPY requirements.txt .
+RUN rm -rf /var/cache/apk/* \
+    rm -rf /tmp/*
+RUN apk update \
+; rm -rf /var/cache/apk/* \
+; pip wheel -r requirements.txt --wheel-dir=/svc/wheels
+# the wheels are now here: /svc/wheels
+FROM python:3.6-alpine
+COPY --from=base /svc /svc
+WORKDIR /svc
+RUN pip install --no-index --find-links=/svc/wheels -r requirements.txt
+COPY smv44-ref.py  .
+CMD [ "python", "./smv44-ref.py" ]
