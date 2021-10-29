@@ -1,6 +1,6 @@
 # SUC
 liste les SUC en France 
-avec python 2.7 ou 3.9
+avec python 2.7 ou 3.9 ou avec docker run -it k3ck3c/suc-tesla
 exemple
 
 python2.7 smv3-ref.py
